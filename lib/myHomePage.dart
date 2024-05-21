@@ -20,6 +20,23 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Image.asset('assets/gpt-robot.png'),
+                SizedBox(width: 10,),
+                Text('Gemini Gpt', style: TextStyle(color: Colors.black),)
+              ],
+            ),
+            Image.asset('assets/volume-high.png', color: Colors.blue[800],)
+          ],
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
@@ -43,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             BorderRadius.only(
                                 topRight: Radius.circular(20),
                                 topLeft: Radius.circular(20),
-                                bottomRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20)
                             )
                           ),
                           child: Text(
@@ -86,9 +103,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   SizedBox(width: 8,),
-                  IconButton(
-                      onPressed: (){},
-                      icon: Icon(Icons.send)
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GestureDetector(
+                      child: Image.asset('assets/send.png'),
+                      onTap: (){},
+                    ),
                   )
                 ],
               ),
