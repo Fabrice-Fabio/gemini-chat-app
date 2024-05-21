@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gemini_gpt/myHomePage.dart';
+import 'package:gemini_gpt/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
         useMaterial3: false,
       ),
-      home: const MyHomePage(),
+      home: Onboarding(),
     );
   }
 }
