@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gemini_gpt/myHomePage.dart';
 import 'package:gemini_gpt/onboarding.dart';
+import 'package:gemini_gpt/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-        useMaterial3: false,
-      ),
+      theme: lightMode,
+      darkTheme: darkMode,
       home: Onboarding(),
     );
   }
