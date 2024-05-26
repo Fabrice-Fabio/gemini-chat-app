@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gemini_gpt/message.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gemini_gpt/themeNotifier.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  ConsumerState<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends ConsumerState<MyHomePage> {
   final TextEditingController _controller = TextEditingController();
   final List<Message> _messages = [
     Message(text: "Hi", isUser: true),
@@ -19,6 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final currentTheme = ref.watch(themeProvider);
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
@@ -35,7 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text('Gemini Gpt', style: Theme.of(context).textTheme.titleLarge,)
               ],
             ),
-            Image.asset('assets/volume-high.png', color: Colors.blue[800],)
+            GestureDetector(
+                child: (currentTheme == ThemeMode.dark) ? Icon(Icons.light_mode, color: Theme.of(context).colorScheme.secondary,) : Icon(Icons.dark_mode,  color: Theme.of(context).colorScheme.primary,),
+              onTap: (){
+                  ref.read(themeProvider.notifier).toggleTheme();
+              },
+            )
           ],
         ),
       ),
